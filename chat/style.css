@@ -70,6 +70,7 @@ body {
   padding: 10px 10px 20px;
   width: fit-content;
   max-width: 80%;
+  min-width: 50px;
 }
 
 .time {

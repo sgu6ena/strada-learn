@@ -94,9 +94,10 @@ async function checkUser() {
 }
 console.log(checkUser())
 
-const createMessage = (isOutgingMessage, text, time) =>{
+const createMessage = (isOutgingMessage, name, text, time) =>{
     const template = document.querySelector(isOutgingMessage ? '#outgoing_message' : '#incoming_message');
     let newMessage = template.content.cloneNode(true);
+    newMessage.querySelector(".name").textContent = name;
     newMessage.querySelector(".message").textContent = text;
     newMessage.querySelector(".time").textContent = new Date(time).toLocaleTimeString();
     chat.prepend(newMessage) 
@@ -131,6 +132,6 @@ history().then(data=>render(data))
 
 function render(messages){
     for (let message of messages) {
-        console.log(message.text)
+        createMessage(false, message.user.name, message.text, message.createdAt)
     }
 }
