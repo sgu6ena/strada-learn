@@ -1,127 +1,188 @@
-    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: rgb(237, 181, 249);
-      position: relative;
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: rgb(237, 181, 249);
+  position: relative;
 
-    }
+}
 
-    .chat_form {
-      display: flex;
-      flex-direction: column;
-      padding: 8px;
-      background-color: white;
-    }
+.chat_form {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  background-color: white;
+}
 
-    .top {
-      height: 32px;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-    }
+.top {
+  height: 32px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
 
-    #settings,  #autorization, #confirmation {
-      border: 1px solid;
-      width: auto;
-      font-family: 'Roboto';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 19px;
-    }
+#settings,
+#autorization,
+#confirmation {
+  border: 1px solid;
+  width: auto;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
 
-    #exit {
-      border: 1px solid;
-      width: 66px;
-      font-family: 'Roboto';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 19px;
-    }
+#exit {
+  border: 1px solid;
+  width: 66px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
 
-    .middle {
-      padding: 10px;
-      display: flex;
-      flex-direction: column-reverse;
-      gap: 10px;
-      overflow-y: auto;
-      border: 1px solid;
-      margin: 8px 0;
-      height: calc(100vh - 160px)
-    }
+.middle {
+  padding: 10px;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+  overflow-y: auto;
+  border: 1px solid;
+  margin: 8px 0;
+  height: calc(100vh - 160px)
+}
 
-    .outgoing_message {
-      align-self: end;
-      ;
-      background-color: bisque;
-    }
+.outgoing_message {
+  align-self: end;
+  ;
+  background-color: bisque;
+}
 
-    .incoming_message {
-      background-color: rgb(255, 140, 0);
-    }
+.incoming_message {
+  background-color: rgb(255, 140, 0);
+}
 
-    .outgoing_message,
-    .incoming_message {
-      position: relative;
-      padding: 10px 10px 20px;
-      width: fit-content;
-      max-width: 80%;
-    }
+.outgoing_message,
+.incoming_message {
+  position: relative;
+  padding: 10px 10px 20px;
+  width: fit-content;
+  max-width: 80%;
+}
 
-    .time {
-      position: absolute;
-      right: 4px;
-      bottom: 2px;
-    }
+.time {
+  position: absolute;
+  right: 4px;
+  bottom: 2px;
+}
 
-    .outgoing_message .time {
-      color: darkgrey;
-    }
+.outgoing_message .time {
+  color: darkgrey;
+}
 
-    .incoming_message .time {
-      color: white;
-    }
+.incoming_message .time {
+  color: white;
+}
 
-    .bottom {
-      height: 32px;
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-
-    #enter_message {
-      border: 1px solid;
-      width: 100%;
-      padding: 8px;
-
-    }
-
-    #send_message {
-      border: 1px solid;
-      flex-shrink: 0;
-      padding: 8px;
-      background: none;
-    }
+.bottom {
+  height: 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
 
 
-    #settingsModal,
-    #autorizationModal,
-    #confirmationModal {
-      display: none;
-    }
+#enter_message {
+  border: 1px solid;
+  width: 100%;
+  padding: 8px;
 
-    #settingsModal.active,
-    #autorizationModal.active,
-    #confirmationModal.active {
-      position: absolute;
-      display: block;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 10px;
-      background-color: white;
-    }
+}
+
+#send_message {
+  border: 1px solid;
+  flex-shrink: 0;
+  padding: 8px;
+  background: none;
+}
+
+
+.modal {
+  display: none;
+}
+
+.modal.active {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  background-color: gray;
+}
+
+.modal .card {
+  margin: auto;
+  padding: 14px 20px;
+  background: #fff;
+  height: 200px;
+
+}
+
+.modal .card .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal .card .top h1 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.modal .card .close {
+  padding: 2px;
+  cursor: pointer;
+  background: white;
+  color: grey;
+  border: none;
+
+  font-size: 32px;
+}
+
+.modal .card h2 {
+  margin-top: 40px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.modal .card form {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal .card form input {
+  width: 245px;
+  height: 32px;
+  padding: 6px 7px 7px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  border: 1px solid black;
+}
+
+.modal .card form button {
+  background: #fff;
+  border: 1px solid black;
+  padding: 7px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  font-family: 'Roboto';
+}
