@@ -10,6 +10,7 @@
     "parcel": "^2.8.0"
   },
   "scripts": {
+    "dev": "parcel index.html --https",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

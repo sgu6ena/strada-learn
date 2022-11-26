@@ -107,7 +107,7 @@ sendMessage.addEventListener('submit', send)
 
 function send(env) {
     env.preventDefault()
-    nowTime = new Date()
+    const nowTime = new Date()
     let textMessage = message.value
     createMessage(true, textMessage, nowTime)
 }
@@ -126,10 +126,11 @@ async function history(){
     const data = await response.json();
     return data.messages
 }
-console.log(history())
+
+history().then(data=>render(data))
 
 function render(messages){
-    for (message of messages) {
-        
+    for (let message of messages) {
+        console.log(message.text)
     }
 }
