@@ -110,6 +110,7 @@ function send(env) {
     env.preventDefault()
     const nowTime = new Date()
     let textMessage = message.value
+    socket.send(JSON.stringify({text: `${textMessage}`}))
     createMessage(true, textMessage, nowTime)
 }
 
@@ -127,7 +128,6 @@ async function history(){
     const data = await response.json();
     return data.messages
 }
-
 history().then(data=>render(data))
 
 function render(messages){
@@ -135,3 +135,7 @@ function render(messages){
         createMessage(false, message.user.name, message.text, message.createdAt)
     }
 }
+
+const socket = new WebSocket(`ws://edu.strada.one/websockets?${Cookies.get('token')}`)
+//socket.send(JSON.stringify({ text: 'my test message' }))
+//socket.onmessage = function(event) { console.log(event.data) }
