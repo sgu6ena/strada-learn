@@ -111,3 +111,25 @@ function send(env) {
     let textMessage = message.value
     createMessage(true, textMessage, nowTime)
 }
+
+async function history(){
+    const historykUrl = 'https://edu.strada.one/api/messages/'
+    let response = await fetch(historykUrl, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Accept : "application/json",
+            mode : 'no-cors',
+            Authorization : `Bearer ${Cookies.get('token')}`
+        },
+    })
+    const data = await response.json();
+    return data.messages
+}
+console.log(history())
+
+function render(messages){
+    for (message of messages) {
+        
+    }
+}
