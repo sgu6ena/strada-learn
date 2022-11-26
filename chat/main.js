@@ -1,4 +1,6 @@
 import Cookies from "js-cookie"
+const socket = new WebSocket(`ws://edu.strada.one/websockets?${Cookies.get('token')}`)
+socket.onmessage = function(event) { console.log(event.data) };
 
 const chat = document.querySelector(".middle");
 chat.scrollTop = chat.scrollHeight;
@@ -111,7 +113,7 @@ function send(env) {
     const nowTime = new Date()
     let textMessage = message.value
     socket.send(JSON.stringify({text: `${textMessage}`}))
-    createMessage(true, textMessage, nowTime)
+    //createMessage(true, textMessage, nowTime)
 }
 
 async function history(){
@@ -136,6 +138,5 @@ function render(messages){
     }
 }
 
-const socket = new WebSocket(`ws://edu.strada.one/websockets?${Cookies.get('token')}`)
 //socket.send(JSON.stringify({ text: 'my test message' }))
 //socket.onmessage = function(event) { console.log(event.data) }
