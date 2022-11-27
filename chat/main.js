@@ -1,8 +1,11 @@
 import Cookies from "js-cookie"
-const socket = new WebSocket(`ws://edu.strada.one/websockets?${Cookies.get('token')}`)
+const socket = new WebSocket(`wss://edu.strada.one/websockets?${Cookies.get('token')}`)
 socket.onmessage = function(event) {
-    createMessage (true, event.data.user.name, event.data.text, event.data.createdAt )
-    console.log(event.data)};
+    const dataMessage = JSON.parse(event.data)
+    createMessage(dataMessage.user.email === Cookies.get('myEmail'), dataMessage.user.name, dataMessage.text, dataMessage.createdAt)
+    console.log(event.data)
+};
+
 
 const chat = document.querySelector(".middle");
 chat.scrollTop = chat.scrollHeight;
