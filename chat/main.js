@@ -139,6 +139,6 @@ history().then(data=>render(data))
 
 function render(messages){
     for (let message of messages) {
-        createMessage(false, message.user.name, message.text, message.createdAt)
+        createMessage(message.user.email === Cookies.get('myEmail'), message.user.name, message.text, message.createdAt)
     }
 }
