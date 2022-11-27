@@ -133,7 +133,7 @@ async function history(){
         },
     })
     const data = await response.json();
-    return data.messages
+    return data.messages.reverse()
 }
 history().then(data=>render(data))
 
