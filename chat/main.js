@@ -1,5 +1,5 @@
 import Cookies from "js-cookie"
-const socket = new WebSocket(`wss://edu.strada.one/websockets?${Cookies.get('token')}`)
+const socket = new WebSocket(`ws://edu.strada.one/websockets?${Cookies.get('token')}`)
 socket.onmessage = function(event) {
     const dataMessage = JSON.parse(event.data)
     createMessage(dataMessage.user.email === Cookies.get('myEmail'), dataMessage.user.name, dataMessage.text, dataMessage.createdAt)
@@ -107,7 +107,8 @@ const createMessage = (isOutgingMessage, name, text, time) =>{
     newMessage.querySelector(".name").textContent = name;
     newMessage.querySelector(".message").textContent = text;
     newMessage.querySelector(".time").textContent = new Date(time).toLocaleTimeString();
-    chat.prepend(newMessage) 
+    chat.append(newMessage)
+    document.querySelector('#enter_message').value = ''
 }
 
 const sendMessage = document.querySelector('.bottom')
